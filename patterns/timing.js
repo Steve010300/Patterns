@@ -19,7 +19,16 @@ export function isSongInPlaylist(playlist, song) {
  * @returns `undefined` if `numbers` is empty
  */
 export function isAllEven(numbers) {
-  // TODO
+  if (!Array.isArray(numbers) || numbers.length === 0) {
+    return undefined;
+  }
+
+  for (const num of numbers) {
+    if (num % 2 !== 0) {
+      return false;
+    }
+  }
+  return true;
 }
 
 /**
@@ -32,5 +41,17 @@ export function isAllEven(numbers) {
  * @returns {boolean} whether there is enough food in the backpack to feed everyone
  */
 export function haveEnoughFood(backpack, people) {
-  // TODO
+  if (!Array.isArray(backpack) || typeof people !== "number" || people < 0) {
+    return false;
+  }
+
+  let foodCount = 0;
+  for (const item of backpack) {
+    if (item.category === "food") {
+      foodCount++;
+    }
+  }
+
+  return foodCount >= people;
 }
+
